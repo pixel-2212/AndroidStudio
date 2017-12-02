@@ -20,6 +20,10 @@ public class Cliente {
         this.estado = estado;
     }
 
+    public void setRut(String rut) {
+        this.rut = rut;
+    }
+
     public String getRut() {
         return rut;
     }

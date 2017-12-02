@@ -22,7 +22,8 @@
         <activity android:name=".Cliente.AgregarCliente" />
         <activity android:name=".Cliente.VerClientes" />
         <activity android:name=".Cliente.EliminarCliente" />
-        <activity android:name=".Pedido.AgregarPedido"></activity>
+        <activity android:name=".Pedido.AgregarPedido" />
+        <activity android:name=".Cliente.InfoCliente"></activity>
     </application>
 
 </manifest>

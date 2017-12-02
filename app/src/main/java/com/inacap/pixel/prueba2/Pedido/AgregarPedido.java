@@ -27,6 +27,10 @@ public class AgregarPedido extends AppCompatActivity {
         startActivity(intent);
     }
     public void addPedido(View view){
+        String rut;
+        String fecha;
+        String productos;
+        String Total;
         Toast.makeText(this, "Pedido Agregado", Toast.LENGTH_SHORT).show();
     }
 }

@@ -21,10 +21,8 @@ public class Clientes extends AppCompatActivity {
         startActivity(intent);
     }
     public void viewClientes(View view){
-        Toast msgError = Toast.makeText(this, "Ver Clientes", Toast.LENGTH_SHORT);
-        msgError.show();
-        /*Intent intent = new Intent(Clientes.this, VerClientes.class);
-        startActivity(intent);*/
+        Intent intent = new Intent(Clientes.this, VerClientes.class);
+        startActivity(intent);
     }
     public void deleteCliente(View view){
         Intent intent = new Intent(Clientes.this, EliminarCliente.class);

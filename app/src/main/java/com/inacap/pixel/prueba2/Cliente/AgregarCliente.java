@@ -76,6 +76,7 @@ public class AgregarCliente extends AppCompatActivity {
         DatabaseHelper db = new DatabaseHelper(this);
         db.ingresarCliente(cliente);
         Toast.makeText(this, "Cliente agregado", Toast.LENGTH_SHORT).show();
+        limpiar();
     }
     public void cancelar(View view){
         Intent intent = new Intent(AgregarCliente.this, Clientes.class);
@@ -85,6 +86,18 @@ public class AgregarCliente extends AppCompatActivity {
     public void onBackPressed() {
         Intent intent = new Intent(AgregarCliente.this, Clientes.class);
         startActivity(intent);
+    }
+    public void limpiar(){
+        EditText rut=(EditText)findViewById(R.id.rut);
+        EditText n_local=(EditText)findViewById(R.id.n_local);
+        EditText n_contacto=(EditText)findViewById(R.id.n_contacto);
+        EditText direccion=(EditText)findViewById(R.id.direccion);
+        EditText telefono=(EditText)findViewById(R.id.telefono);
+        rut.setText("");
+        n_local.setText("");
+        n_contacto.setText("");
+        direccion.setText("");
+        telefono.setText("");
     }
 
 }

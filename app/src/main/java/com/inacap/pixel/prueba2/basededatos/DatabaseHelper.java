@@ -12,7 +12,7 @@ import com.inacap.pixel.prueba2.Cliente.Cliente;
  */
 
 public class DatabaseHelper extends SQLiteOpenHelper {
-    private static final String DB_NAME="bd_productosfrescos.db";
+    private static final String DB_NAME="bd_pf.db";
     private static final int DB_VERSION=1;
 
     public DatabaseHelper(Context context){
@@ -22,7 +22,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         String sqlClientes="CREATE TABLE CLIENTES(" +
-                "_id INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "RUT TEXT, N_LOCAL TEXT, N_CONTACTO TEXT, " +
                 "DIRECCION TEXT, TELEFONO TEXT, ESTADO TEXT)";
         sqLiteDatabase.execSQL(sqlClientes);
@@ -34,27 +33,21 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String sqlProductos="CREATE TABLE PRODUCTOS(" +
                 "CODIGO INTEGER, NOMBRE TEXT, PRECIO INTEGER)";
         sqLiteDatabase.execSQL(sqlProductos);
-        ContentValues valores=new ContentValues();
-        valores.put("CODIGO",000121);
-        valores.put("NOMBRE","CHOCMAN");
-        valores.put("PRECIO",3600);
-        getWritableDatabase().insert("PRODUCTOS", null, valores);
-        valores.put("CODIGO",000123);
-        valores.put("NOMBRE","SUPER 8");
-        valores.put("PRECIO",2900);
-        getWritableDatabase().insert("PRODUCTOS", null, valores);
-        valores.put("CODIGO",000127);
-        valores.put("NOMBRE","GOLAZO");
-        valores.put("PRECIO",3600);
-        getWritableDatabase().insert("PRODUCTOS", null, valores);
-        valores.put("CODIGO",000125);
-        valores.put("NOMBRE","BOM BOM BUM");
-        valores.put("PRECIO",1900);
-        getWritableDatabase().insert("PRODUCTOS", null, valores);
-        valores.put("CODIGO",000131);
-        valores.put("NOMBRE","PIN POP");
-        valores.put("PRECIO",1700);
-        getWritableDatabase().insert("PRODUCTOS", null, valores);
+        String sqlp1="INSERT INTO PRODUCTOS(CODIGO, NOMBRE, PRECIO) " +
+                "VALUES(000121,'CHOCMAN',3600)";
+        sqLiteDatabase.execSQL(sqlp1);
+        String sqlp2="INSERT INTO PRODUCTOS(CODIGO, NOMBRE, PRECIO) " +
+                "VALUES(000123,'SUPER 8',2900)";
+        sqLiteDatabase.execSQL(sqlp2);
+        String sqlp3="INSERT INTO PRODUCTOS(CODIGO, NOMBRE, PRECIO) " +
+                "VALUES(000127,'GOLAZO',3600)";
+        sqLiteDatabase.execSQL(sqlp3);
+        String sqlp4="INSERT INTO PRODUCTOS(CODIGO, NOMBRE, PRECIO) " +
+                "VALUES(000125,'BOM BOM BUM',1900)";
+        sqLiteDatabase.execSQL(sqlp4);
+        String sqlp5="INSERT INTO PRODUCTOS(CODIGO, NOMBRE, PRECIO) " +
+                "VALUES(000131,'PIN POP',1700)";
+        sqLiteDatabase.execSQL(sqlp5);
     }
 
     @Override
@@ -85,4 +78,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         valores.put("ESTADO",cliente.getEstado());
         getWritableDatabase().insert("CLIENTES",null,valores);
     }
+    public void actualizarCliente(Cliente cliente){
+        ContentValues valores = new ContentValues();
+        valores.put("RUT",cliente.getRut());
+        valores.put("N_LOCAL",cliente.getN_local());
+        valores.put("N_CONTACTO",cliente.getN_contacto());
+        valores.put("DIRECCION",cliente.getDireccion());
+        valores.put("TELEFONO",cliente.getTelefono());
+        valores.put("ESTADO",cliente.getEstado());
+        getWritableDatabase().update("CLIENTES",valores,"RUT="+cliente.getRut(),null);
+    }
+
 }
